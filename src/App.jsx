@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { ProtectedRoute } from './components/ProtectedRoute';
 import { Admin, Analytics, Dashboard, Home, Landing } from './pages';
 
 function App() {
@@ -24,8 +25,10 @@ function App() {
             <Routes>
                 <Route index element={<Landing />} />
                 <Route path='/landing' element={<Landing />} />
-                <Route path='/home' element={<Home user={user} />} />
-                <Route path='/dashboard' element={<Dashboard />} />
+                <Route element={<ProtectedRoute user={user} />}>
+                    <Route path='/home' element={<Home />} />
+                    <Route path='/dashboard' element={<Dashboard />} />
+                </Route>
                 <Route path='/analytics' element={<Analytics />} />
                 <Route path='/admin' element={<Admin />} />
             </Routes>

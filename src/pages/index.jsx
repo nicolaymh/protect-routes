@@ -2,9 +2,7 @@ import { Navigate } from 'react-router-dom';
 
 export const Landing = () => <h2>Landing Page (Public)</h2>;
 
-export const Home = ({ user }) => {
-    if (!user) return <Navigate to='/landing' />;
-
+export const Home = () => {
     return <h2>Home Page (Private)</h2>;
 };
 
